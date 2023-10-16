@@ -1,0 +1,18 @@
+class Solution {
+    public boolean isBalanced(TreeNode root) {
+        if (root==null) return true;
+        if(Math.abs(height(root.left)-height(root.right))>1){
+            return false;
+        }
+        return isBalanced(root.left) && isBalanced(root.right);
+    }
+    //function to find height
+    public int height(TreeNode root){
+        if(root==null) return 0;
+
+        //we are adding one hear ,because we have to consider the root also
+        int lh = 1+height(root.left);
+        int rh = 1+height(root.right);
+        return Math.max(lh, rh);
+    }
+}
